@@ -33,10 +33,10 @@ install_ss_panel(){
 		fi
 	}
 	install_soft_for_each
-	wget -c https://raw.githubusercontent.com/mmmwhy/ss-panel-and-ss-py-mu/master/lnmp1.3.zip && unzip lnmp1.3.zip && cd lnmp1.3 && chmod +x install.sh && ./install.sh lnmp
+	wget -c https://raw.githubusercontent.com/Taylor000/ss-panel-and-ss-py-mu/master/lnmp1.3.zip && unzip lnmp1.3.zip && cd lnmp1.3 && chmod +x install.sh && ./install.sh lnmp
 	chattr -i /home/wwwroot/default/.user.ini
 	rm -rf /home/wwwroot/default
-	git clone https://github.com/mmmwhy/ss-panel.git "/home/wwwroot/default"
+	git clone https://github.com/Taylor000/ss-panel.git "/home/wwwroot/default"
 	cd /home/wwwroot/default
 	curl -sS https://install.phpcomposer.com/installer | php
 	chmod +x composer.phar
@@ -45,7 +45,7 @@ install_ss_panel(){
 	mysql -uroot -proot -e"create database ss;" 
 	mysql -uroot -proot -e"use ss;" 
 	mysql -uroot -proot ss < /home/wwwroot/default/db.sql
-	wget -N -P  /usr/local/nginx/conf/ --no-check-certificate https://raw.githubusercontent.com/mmmwhy/ss-panel-and-ss-py-mu/master/nginx.conf
+	wget -N -P  /usr/local/nginx/conf/ --no-check-certificate https://raw.githubusercontent.com/Taylor000/ss-panel-and-ss-py-mu/master/nginx.conf
 	lnmp nginx restart
 }
 
@@ -55,13 +55,14 @@ install_ss_py_mu(){
 	echo
 	echo "#############################################################"
 	echo "# One click Install Shadowsocks-Python-Manyuser             #"
-	echo "# Github: https://github.com/mmmwhy/ss-panel-and-ss-py-mu   #"
-	echo "# Author: 91vps                                             #"
+	echo "# Github: https://github.com/Taylor000/ss-panel-and-ss-py-mu   #"
+	echo "# 原作者: 91vps                                              #"
+	echo "# 修改自用：Taylor000                                        #"
 	echo "#############################################################"
 	echo
 	#Check Root
 	[ $(id -u) != "0" ] && { echo "Error: You must be root to run this script"; exit 1; }
-	read -p "Please input your domain(like:https://ss.91vps.us or http://114.114.114.114): " Userdomain
+	read -p "Please input your domain(like:https://swww.baidu.com or http://114.114.114.114): " Userdomain
 	read -p "Please input your mukey(like:mupass): " Usermukey
 	read -p "Please input your Node_ID(like:1): " UserNODE_ID
 	#check OS version
@@ -89,7 +90,7 @@ install_ss_py_mu(){
 			echo "Will install below software on your centos system:"
 			yum install git lsof -y
 			yum -y install python-setuptools  
-			curl https://raw.githubusercontent.com/mmmwhy/ss-panel-and-ss-py-mu/master/get-pip.py -o get-pip.py
+			curl https://raw.githubusercontent.com/Taylor000/ss-panel-and-ss-py-mu/master/get-pip.py -o get-pip.py
 			python get-pip.py
 			rm -rf python get-pip.py
 			yum -y groupinstall "Development Tools"
@@ -114,7 +115,7 @@ install_ss_py_mu(){
 	}
 	install_soft_for_each
 	echo "Let's setup your ssnode/root"
-	git clone https://github.com/mmmwhy/shadowsocks-py-mu.git "/root/shadowsocks-py-mu"
+	git clone https://github.com/Taylor000/shadowsocks-py-mu.git "/root/shadowsocks-py-mu"
 	#modify Config.py
 	echo -e "modify Config.py...\n"
 	Userdomain=${Userdomain:-"https://ss.91vps.club"}
@@ -193,7 +194,7 @@ one_click_all(){
 	}
 	install_soft_for_each
 	echo "Let's setup your ssnode/root"
-	git clone https://github.com/mmmwhy/shadowsocks-py-mu.git "/root/shadowsocks-py-mu"
+	git clone https://github.com/Taylor000/shadowsocks-py-mu.git "/root/shadowsocks-py-mu"
 	#modify Config.py
 	echo -e "modify Config.py...\n"
 	sed -i "s#domain#${IPAddress}#" /root/shadowsocks-py-mu/shadowsocks/config.py
@@ -218,7 +219,8 @@ one_click_all(){
 	echo "# 安装完成，登录http://${IPAddress}看看吧~                  #"
 	echo "# 用户名: 91vps 密码: 91vps                                 #"
 	echo "# Github: https://github.com/mmmwhy/ss-panel-and-ss-py-mu   #"
-	echo "# Author: 91vps                                             #"
+	echo "# 原作者: 91vps                                             #"
+	echo "# 修改自用：Taylor000                                       #"
 	echo "#############################################################"
 }
 
@@ -226,8 +228,9 @@ one_click_all(){
 echo
 echo "#############################################################"
 echo "# One click Install SS-panel and Shadowsocks-Py-Mu          #"
-echo "# Github: https://github.com/mmmwhy/ss-panel-and-ss-py-mu   #"
-echo "# Author: 91vps                                             #"
+echo "# Github: https://github.com/Taylor000/ss-panel-and-ss-py-mu   #"
+echo "# 原作者: 91vps                                             #"
+echo "# 修改自用：Taylor000                                        #"
 echo "# Please choose the server you want                         #"
 echo "# 1  SS-panel + SS-node One click Install                   #"
 echo "# 2  SS-panel One click Install                             #"
